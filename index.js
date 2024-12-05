@@ -165,7 +165,7 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 // Start API
-app.get("/", ()=>{
+app.get("/", (req, res)=>{
   return res.json({message: "Hello World"})
 })
 app.post("/start", async (req, res) => {
