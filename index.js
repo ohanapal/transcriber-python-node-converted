@@ -7,6 +7,7 @@ const sharp = require("sharp");
 const mic = require("mic");
 const FormData = require("form-data");
 const cors = require("cors")
+require("dotenv").config();
 // Constants
 const SERVER_URL = process.env.SERVER_URL || "http://localhost:3000";
 const SCREENSHOT_INTERVAL = parseInt(process.env.SCREENSHOT_INTERVAL, 10) || 10000; // 10 seconds
@@ -164,6 +165,9 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 // Start API
+app.get("/", ()=>{
+  return res.json({message: "Hello World"})
+})
 app.post("/start", async (req, res) => {
   try {
     const { selectedMonitors, speakers, botId: bot } = req.body;
